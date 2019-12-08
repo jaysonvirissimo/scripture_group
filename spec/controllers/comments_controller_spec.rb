@@ -82,7 +82,7 @@ RSpec.describe CommentsController, type: :controller do
 
       it "redirects to the created comment" do
         post :create, params: {comment: valid_attributes}, session: valid_session
-        expect(response).to redirect_to(Comment.last)
+        expect(response).to redirect_to(readings_url)
       end
     end
 
