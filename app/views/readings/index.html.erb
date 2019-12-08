@@ -17,13 +17,25 @@
         <td><%= link_to 'Show', reading %></td>
         <td><%= link_to 'Edit', edit_reading_path(reading) %></td>
       </tr>
+      <tr><td><strong>Questions:</strong></td></tr>
       <% reading.questions.each_with_index do |question, index| %>
         <tr>
           <td><%= "#{index + 1}. #{question.body}" %></td>
         </tr>
       <% end %>
+      <tr><td>New Question:</td></tr>
       <tr>
         <td><%= render 'questions/form', reading: reading, question: Question.new %></td>
+      </tr>
+      <tr><td><strong>Comments:</strong></td></tr>
+      <% reading.comments.each_with_index do |comment, index| %>
+        <tr>
+          <td><%= "#{index + 1}. #{comment.body}" %></td>
+        </tr>
+      <% end %>
+      <tr><td>New Comment:</td></tr>
+      <tr>
+        <td><%= render 'comments/form', reading: reading, comment: Comment.new %></td>
       </tr>
     <% end %>
   </tbody>
