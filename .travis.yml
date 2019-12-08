@@ -1,4 +1,11 @@
+before_script:
+- psql -c 'create database book_club_test;' -U postgres
 deploy:
+  app:
+    master: sleepy-scrubland-59880
   provider: heroku
   api_key:
     secure: u+xCSr4zAukHDTRDTgs5Ccl4GraPEYJeuEzeLU6dDiG7kmi3dGxSULm+toT1npUMq8DDuxayAJHTWgR0IRQvnVYhKQ+2mV35xbnkRXzdjI4qitbGbsnfPno8wOS5aOP32mjQCnFz7zm8U5ioFFpm7qkTjjjULvQwpVLLG3i/nkZLnCb+4NEt6umlBQIjg8ludOudciVX/0j69w7zhIWAMBrJkPui8dNO3THEadxI8qkijdKBRQd3QjRFTpcos7jfE7Dt9d8lXh2y8bqz/lgFEdZB+uNBnVxAfXVLYy/YUWSq8jE8VPbMYh4zFhu3THJgSD/SrEzpCpFlvLlVsYPdPELIuA1qzzxr7q8p0sNL4WrkV8XkvKFzPBL8/s5eMxt/rkupm4BELkZvoTNTCDiC+eQe5oGrAllyzYcmUmfMV3moiiDg4PncMh1ol0zREfJfyGce+mOM+d9Jvfq+ZsbOU4GBmcms76iXwKvNFIBuZRmygsFtBH03T/6HF9KSnbGWAr1euCk8P7OekQ1wLPA1tQWUjwirPFqiOqZXGxaXGqw+EpkfRx/d2YcmR93ooS2KRbLdbnSyLXTt0fsQ2scAPUzs69jsMXRBJhdySEiI/65/JBRy2NIkycY9A7YSTt51vOtkLFiZxeNUTpdG/jXtsMYZRfigNnYPdxciV8jKRo0=
+  run: rails db:migrate
+services:
+- postgresql
