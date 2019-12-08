@@ -12,14 +12,11 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :body %>
     <%= form.text_area :body %>
   </div>
 
   <div class="field">
-    <%= form.label :reading_id %>
-    <%= form.text_field :reading_id %>
-    <%= form.hidden_field :reading_id, value: @reading.id %>
+    <%= form.hidden_field :reading_id, value: reading.id %>
   </div>
 
   <div class="actions">
