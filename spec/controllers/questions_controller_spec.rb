@@ -75,14 +75,14 @@ RSpec.describe QuestionsController, type: :controller do
 
       it "redirects to the created question" do
         post :create, params: {question: valid_attributes}, session: valid_session
-        expect(response).to redirect_to(Question.last)
+        expect(response).to redirect_to(readings_url)
       end
     end
 
     context "with invalid params" do
       it "returns a success response (i.e. to display the 'new' template)" do
         post :create, params: {question: invalid_attributes}, session: valid_session
-        expect(response).to be_successful
+        expect(response).to redirect_to(readings_url)
       end
     end
   end

@@ -24,10 +24,8 @@ class QuestionsController < ApplicationController
     respond_to do |format|
       if @question.save
         format.html { redirect_to readings_url, notice: 'Question was successfully created.' }
-        format.json { render :show, status: :created, location: @question }
       else
-        format.html { render :new }
-        format.json { render json: @question.errors, status: :unprocessable_entity }
+        format.html { redirect_to readings_url, notice: @question.errors.full_messages.to_sentence }
       end
     end
   end
