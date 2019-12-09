@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class ReadingsController < ApplicationController
-  before_action :set_reading, only: [:show, :edit, :update, :destroy]
+  before_action :set_reading, only: %i[show edit update destroy]
 
   # GET /readings
   # GET /readings.json
@@ -9,8 +11,7 @@ class ReadingsController < ApplicationController
 
   # GET /readings/1
   # GET /readings/1.json
-  def show
-  end
+  def show; end
 
   # GET /readings/new
   def new
@@ -18,8 +19,7 @@ class ReadingsController < ApplicationController
   end
 
   # GET /readings/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /readings
   # POST /readings.json
@@ -62,13 +62,14 @@ class ReadingsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_reading
-      @reading = Reading.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def reading_params
-      params.require(:reading).permit(:body)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_reading
+    @reading = Reading.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def reading_params
+    params.require(:reading).permit(:body)
+  end
 end
