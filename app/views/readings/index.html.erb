@@ -6,9 +6,11 @@
 
 <% @readings.each do |reading| %>
   <h2>This Week</h2>
-  <%= reading.body %>
+  <p><%= reading.body %></p>
+  <p>Date: <%= reading.date || 'None specified' %></p>
   <%= link_to 'Show', reading %>
   <%= link_to 'Edit', edit_reading_path(reading) %>
+
   <h3> Questions </h3>
   <% reading.questions.each do |question, index| %>
     <ul>
