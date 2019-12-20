@@ -4,8 +4,12 @@
 <p>Use this space to capture questions and comments.</p>
 <p>Remember to save discussion for when we are in person!</p>
 
-<% @readings.each do |reading| %>
-  <h2>This Week</h2>
+<% @readings.each_with_index do |reading, index| %>
+  <% if index.zero? %>
+    <h2>This Week</h2>
+  <% elsif index == 1 %>
+    <h2>Last Week</h2>
+  <% end %>
   <p><%= reading.body %></p>
   <p>Date: <%= reading.date || 'None specified' %></p>
   <%= link_to 'Show', reading %>
@@ -30,6 +34,8 @@
   <% end %>
   <h4>New Comment:</h4>
   <%= render 'comments/form', comment: Comment.new, reading: reading  %>
+
+  <div class="divider"></div>
 <% end %>
 
 <br>
