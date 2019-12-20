@@ -6,7 +6,7 @@ class ReadingsController < ApplicationController
   # GET /readings
   # GET /readings.json
   def index
-    @readings = Reading.all.order(:date)
+    @readings = Reading.all.order(date: :asc)
   end
 
   # GET /readings/1
@@ -70,6 +70,6 @@ class ReadingsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def reading_params
-    params.require(:reading).permit(:body, :date)
+    params.require(:reading).permit(:body, :date, :location)
   end
 end

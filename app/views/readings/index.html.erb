@@ -12,6 +12,7 @@
   <% end %>
   <p><%= reading.body %></p>
   <p>Date: <%= reading.date || 'None specified' %></p>
+  <p>Location: <%= reading.location || 'None specified' %></p>
   <%= link_to 'Show', reading %>
   <%= link_to 'Edit', edit_reading_path(reading) %>
 
