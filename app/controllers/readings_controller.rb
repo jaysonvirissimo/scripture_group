@@ -6,7 +6,7 @@ class ReadingsController < ApplicationController
   # GET /readings
   # GET /readings.json
   def index
-    @readings = Reading.all.order(date: :desc)
+    @readings = Reading.all.order(date: :desc).limit(2)
   end
 
   # GET /readings/1

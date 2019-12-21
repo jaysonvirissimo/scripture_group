@@ -12,7 +12,7 @@
   <% end %>
 
   <div class="field">
-    <%= form.text_area :body %>
+    <%= form.text_area :body, placeholder: 'Reaction body' %>
   </div>
 
   <div class="field">
@@ -20,8 +20,7 @@
   </div>
 
   <div class="field">
-    <%= form.label 'Name (Optional)' %>
-    <%= form.text_field :name %>
+    <%= form.text_field :name, placeholder: 'Name (optional)' %>
   </div>
 
   <div class="actions">
