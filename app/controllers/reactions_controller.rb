@@ -28,7 +28,7 @@ class ReactionsController < ApplicationController
 
     respond_to do |format|
       if @reaction.save
-        format.html { redirect_to @reaction, notice: 'Reaction was successfully created.' }
+        format.html { redirect_to readings_url, notice: 'Reaction was successfully created.' }
         format.json { render :show, status: :created, location: @reaction }
       else
         format.html { render :new }
