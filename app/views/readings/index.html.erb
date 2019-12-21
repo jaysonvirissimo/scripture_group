@@ -23,33 +23,27 @@
     <div class="card-footer">
        <%= link_to 'Edit', edit_reading_path(reading), class: 'btn' %>
     </div>
-  </div>
-
-  <div class="divider"></div>
-
-  <div class="panel">
-    <div class="panel-header">
-      <div class="panel-title"><strong>Questions</strong></div>
+    <div class="panel">
+      <div class="panel-header">
+        <div class="panel-title"><strong>Questions</strong></div>
+      </div>
+      <% reading.questions.each do |question, index| %>
+        <div class="panel-body"><p><%= question.body %></p></div>
+      <% end %>
+      <div class="panel-footer">
+        <%= render 'questions/form', reading: reading, question: Question.new %>
+      </div>
     </div>
-    <% reading.questions.each do |question, index| %>
-      <div class="panel-body"><p><%= question.body %></p></div>
-    <% end %>
-    <div class="panel-footer">
-      <%= render 'questions/form', reading: reading, question: Question.new %>
-    </div>
-  </div>
-
-  <div class="divider"></div>
-
-  <div class="panel">
-    <div class="panel-header">
-      <div class="panel-title"><strong>Comments</strong></div>
-    </div>
-    <% reading.comments.each do |comment, index| %>
-      <div class="panel-body"><p><%= comment.body %></p></div>
-    <% end %>
-    <div class="panel-footer">
-      <%= render 'comments/form', comment: Comment.new, reading: reading  %>
+    <div class="panel">
+      <div class="panel-header">
+        <div class="panel-title"><strong>Comments</strong></div>
+      </div>
+      <% reading.comments.each do |comment, index| %>
+        <div class="panel-body"><p><%= comment.body %></p></div>
+      <% end %>
+      <div class="panel-footer">
+        <%= render 'comments/form', comment: Comment.new, reading: reading  %>
+      </div>
     </div>
   </div>
 <% end %>
