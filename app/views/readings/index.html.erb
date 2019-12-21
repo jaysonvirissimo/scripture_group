@@ -16,27 +16,33 @@
   <%= link_to 'Show', reading %>
   <%= link_to 'Edit', edit_reading_path(reading) %>
 
-  <h3> Questions </h3>
-  <% reading.questions.each do |question, index| %>
-    <ul>
-      <li><%= question.body %></li>
-    </ul>
+  <div class="divider"></div>
 
-  <% end %>
-  <h4>New Question:</h4>
-  <%= render 'questions/form', reading: reading, question: Question.new %>
-
-  <h3> Comments </h3>
-  <% reading.comments.each do |comment, index| %>
-    <ul>
-      <li><%= comment.body %></li>
-    </ul>
-
-  <% end %>
-  <h4>New Comment:</h4>
-  <%= render 'comments/form', comment: Comment.new, reading: reading  %>
+  <div class="panel">
+    <div class="panel-header">
+      <div class="panel-title"><strong>Questions</strong></div>
+    </div>
+    <% reading.questions.each do |question, index| %>
+      <div class="panel-body"><p><%= question.body %></p></div>
+    <% end %>
+    <div class="panel-footer">
+      <%= render 'questions/form', reading: reading, question: Question.new %>
+    </div>
+  </div>
 
   <div class="divider"></div>
+
+  <div class="panel">
+    <div class="panel-header">
+      <div class="panel-title"><strong>Comments</strong></div>
+    </div>
+    <% reading.comments.each do |comment, index| %>
+      <div class="panel-body"><p><%= comment.body %></p></div>
+    <% end %>
+    <div class="panel-footer">
+      <%= render 'comments/form', comment: Comment.new, reading: reading  %>
+    </div>
+  </div>
 <% end %>
 
 <br>
