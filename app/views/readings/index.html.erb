@@ -28,7 +28,12 @@
         <div class="panel-title"><strong>Reactions</strong></div>
       </div>
       <% reading.reactions.each_with_index do |reaction, index| %>
-        <div class="panel-body"><p><%= "#{index + 1}. #{reaction.body}" %></p></div>
+        <div class="panel-body">
+          <p><%= "#{index + 1}. #{reaction.body}" %></p>
+          <% if reaction.name.present? %>
+            <p><%= "-- #{reaction.name}" %></p>
+          <% end %>
+        </div>
       <% end %>
       <div class="panel-footer">
         <%= render 'reactions/form', reading: reading, reaction: Reaction.new %>
