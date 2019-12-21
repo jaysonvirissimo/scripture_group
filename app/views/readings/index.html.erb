@@ -5,16 +5,25 @@
 <p>Remember to save discussion for when we are in person!</p>
 
 <% @readings.each_with_index do |reading, index| %>
-  <% if index.zero? %>
-    <h2>This Week</h2>
-  <% elsif index == 1 %>
-    <h2>Last Week</h2>
-  <% end %>
-  <p><%= reading.body %></p>
-  <p>Date: <%= reading.date || 'None specified' %></p>
-  <p>Location: <%= reading.location || 'None specified' %></p>
-  <%= link_to 'Show', reading %>
-  <%= link_to 'Edit', edit_reading_path(reading) %>
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title h5">
+        <% if index.zero? %>
+          This Week
+        <% elsif index == 1 %>
+          Last Week
+        <% end %>
+      </div>
+      <div class="card-subtitle text-gray"><%= reading.date || 'None specified' %></div>
+      <div class="card-subtitle text-gray"><%= reading.location || 'None specified' %></div>
+    </div>
+    <div class="card-body">
+      <%= reading.body %>
+    </div>
+    <div class="card-footer">
+       <%= link_to 'Edit', edit_reading_path(reading), class: 'btn' %>
+    </div>
+  </div>
 
   <div class="divider"></div>
 
