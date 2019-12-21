@@ -25,27 +25,15 @@
     </div>
     <div class="panel">
       <div class="panel-header">
-        <div class="panel-title"><strong>Questions</strong></div>
+        <div class="panel-title"><strong>Reactions</strong></div>
       </div>
-      <% reading.questions.each do |question, index| %>
-        <div class="panel-body"><p><%= question.body %></p></div>
+      <% reading.reactions.each do |reaction, index| %>
+        <div class="panel-body"><p><%= reaction.body %></p></div>
       <% end %>
       <div class="panel-footer">
-        <%= render 'questions/form', reading: reading, question: Question.new %>
+        <%= render 'reactions/form', reading: reading, reaction: Reaction.new %>
       </div>
     </div>
-    <div class="panel">
-      <div class="panel-header">
-        <div class="panel-title"><strong>Comments</strong></div>
-      </div>
-      <% reading.comments.each do |comment, index| %>
-        <div class="panel-body"><p><%= comment.body %></p></div>
-      <% end %>
-      <div class="panel-footer">
-        <%= render 'comments/form', comment: Comment.new, reading: reading  %>
-      </div>
-    </div>
-  </div>
 <% end %>
 
 <br>

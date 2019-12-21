@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_20_040718) do
+ActiveRecord::Schema.define(version: 2019_12_21_170155) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,6 +62,15 @@ ActiveRecord::Schema.define(version: 2019_12_20_040718) do
     t.index ["reading_id"], name: "index_questions_on_reading_id"
   end
 
+  create_table "reactions", force: :cascade do |t|
+    t.text "body"
+    t.bigint "reading_id", null: false
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["reading_id"], name: "index_reactions_on_reading_id"
+  end
+
   create_table "readings", force: :cascade do |t|
     t.text "body"
     t.datetime "created_at", precision: 6, null: false
@@ -73,4 +82,5 @@ ActiveRecord::Schema.define(version: 2019_12_20_040718) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "comments", "readings"
   add_foreign_key "questions", "readings"
+  add_foreign_key "reactions", "readings"
 end

@@ -2,6 +2,5 @@
 
 class Reading < ApplicationRecord
   has_rich_text :body
-  has_many :comments
-  has_many :questions
+  has_many :reactions
 end
