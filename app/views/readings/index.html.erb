@@ -1,41 +1,10 @@
 <p id="notice"><%= notice %></p>
 
-<% @readings.each_with_index do |reading, index| %>
-  <div class="card">
-    <div class="card-header">
-      <div class="card-title h5">
-        <% if index.zero? %>
-          This Week
-        <% elsif index == 1 %>
-          Last Week
-        <% end %>
-      </div>
-      <div class="card-subtitle text-gray"><%= reading.date || 'None specified' %></div>
-      <div class="card-subtitle text-gray"><%= reading.location || 'None specified' %></div>
-    </div>
-    <div class="card-body">
-      <%= reading.body %>
-    </div>
-    <div class="card-footer">
-       <%= link_to 'Edit', edit_reading_path(reading), class: 'btn' %>
-    </div>
-    <div class="panel">
-      <div class="panel-header">
-        <div class="panel-title"><strong>Reactions</strong></div>
-      </div>
-      <% reading.reactions.each_with_index do |reaction, index| %>
-        <div class="panel-body">
-          <p><%= "#{index + 1}. #{reaction.body}" %></p>
-          <% if reaction.name.present? %>
-            <p><%= "-- #{reaction.name}" %></p>
-          <% end %>
-        </div>
-      <% end %>
-      <div class="panel-footer">
-        <%= render 'reactions/form', reading: reading, reaction: Reaction.new %>
-      </div>
-    </div>
-<% end %>
+<ul>
+  <% @readings.each_with_index do |reading, index| %>
+    <li><%= link_to "#{reading.date} -- #{reading.location}", reading %></li>
+  <% end %>
+</ul>
 
 <br>
 
