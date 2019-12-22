@@ -11,19 +11,9 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.text_area :body, placeholder: 'Reaction body' %>
-  </div>
-
-  <div class="field">
+  <div class="input-group">
+    <%= form.text_area :body, class: 'form-input', placeholder: 'Type your reaction here' %>
     <%= form.hidden_field :reading_id, value: reading.id %>
-  </div>
-
-  <div class="field">
-    <%= form.text_field :name, placeholder: 'Name (optional)' %>
-  </div>
-
-  <div class="actions">
-    <%= form.button 'Add Reaction', class: 'btn' %>
+    <%= form.button 'Add Reaction', class: 'btn btn-primary input-group-btn' %>
   </div>
 <% end %>

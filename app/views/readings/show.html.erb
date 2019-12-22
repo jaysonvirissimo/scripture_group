@@ -1,11 +1,42 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Body:</strong>
-  <%= @reading.body %>
-</p>
+<div class="text-center">
+  <p>Use this space to capture questions and comments.</p>
+  <p>Remember to save discussion for when we are in person!</p>
+</div>
+<div class="panel">
+  <div class="panel-header">
+    <div class="panel-title h2">
+      Reading
+      <%= link_to 'Edit', edit_reading_path(@reading), class: 'btn btn-primary' %>
+    </div>
+  </div>
+  <div class="panel-body">
+    <div class="tile">
+      <div class="tile-content">
+        <div class="tile-subtitle"><%= @reading.date %></div>
+        <div class="tile-subtitle"><%= @reading.location %></div>
+        <div><%= @reading.body %></div>
+      </div>
+    </div>
+  </div>
+</div>
 
-<%= render 'questions/form', reading: @reading, question: Question.new %>
+<div class="divider"></div>
 
-<%= link_to 'Edit', edit_reading_path(@reading) %> |
-<%= link_to 'Back', readings_path %>
+<div class="panel">
+  <div class="panel-header">
+    <div class="panel-title h6">Reactions</div>
+  </div>
+  <div class="panel-body">
+    <% @reading.reactions.each_with_index do |reaction, index| %>
+      <div class="tile">
+        <div class="tile-content">
+          <cite class="tile-subtitle"><%= "#{index + 1}. #{reaction.body}" %></cite>
+        </div>
+      </div>
+    <% end %>
+  <div class="panel-footer">
+    <%= render 'reactions/form', reading: @reading, reaction: Reaction.new %>
+  </div>
+</div>
