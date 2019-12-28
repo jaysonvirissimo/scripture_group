@@ -1,8 +1,14 @@
 <p id="notice"><%= notice %></p>
 
-<ul>
+<h2>Readings</h2>
+<ul class="list-group">
   <% @readings.each_with_index do |reading, index| %>
-    <li><%= link_to "#{reading.date} -- #{reading.location}", reading %></li>
+    <li class="list-group-item">
+      <%= link_to "#{reading.date} -- #{reading.location}", reading %>
+      <% if index.zero? %>
+        <span class="badge badge-secondary">New</span>
+      <% end %>
+    </li>
   <% end %>
 </ul>
 
