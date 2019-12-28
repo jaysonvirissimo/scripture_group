@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Question, type: :model do
   describe '#new' do
     context 'associated with a given reading' do
-      let(:reading) { Reading.create(body: 'Stuff') }
+      let(:reading) { Reading.create(body: 'Stuff', date: Date.today) }
 
       context 'and a unique body' do
         let(:question) do
