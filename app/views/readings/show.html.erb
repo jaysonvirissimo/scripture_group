@@ -4,39 +4,22 @@
   <p>Use this space to capture questions and comments.</p>
   <p>Remember to save discussion for when we are in person!</p>
 </div>
-<div class="panel">
-  <div class="panel-header">
-    <div class="panel-title h2">
-      Reading
-      <%= link_to 'Edit', edit_reading_path(@reading), class: 'btn btn-primary' %>
-    </div>
-  </div>
-  <div class="panel-body">
-    <div class="tile">
-      <div class="tile-content">
-        <div class="tile-subtitle"><%= @reading.date %></div>
-        <div class="tile-subtitle"><%= @reading.location %></div>
-        <div><%= @reading.body %></div>
-      </div>
-    </div>
-  </div>
-</div>
 
-<div class="divider"></div>
-
-<div class="panel">
-  <div class="panel-header">
-    <div class="panel-title h6">Reactions</div>
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">Reading</h5>
+    <h6 class="card-subtitle mb-2 text-muted"><%= @reading.date %></h6>
+    <h6 class="card-subtitle mb-2 text-muted"><%= @reading.location %></h6>
+    <p class="card-text"><%= @reading.body %></p>
+    <%= link_to 'Edit', edit_reading_path(@reading), class: 'card-link' %>
   </div>
-  <div class="panel-body">
-    <% @reading.reactions.each_with_index do |reaction, index| %>
-      <div class="tile">
-        <div class="tile-content">
-          <cite class="tile-subtitle"><%= "#{index + 1}. #{reaction.body}" %></cite>
-        </div>
-      </div>
-    <% end %>
-  <div class="panel-footer">
-    <%= render 'reactions/form', reading: @reading, reaction: Reaction.new %>
+  <div class="card-body">
+    <h5 class="card-title">Reactions</h5>
+    <ul class="list-group list-group-flush">
+      <% @reading.reactions.each_with_index do |reaction, index| %>
+        <li class="list-group-item"><%= reaction.body %></li>
+      <% end %>
+    </ul>
   </div>
+  <%= render 'reactions/form', reading: @reading, reaction: Reaction.new %>
 </div>
