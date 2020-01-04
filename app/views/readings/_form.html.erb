@@ -11,23 +11,23 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :body %>
-    <%= form.rich_text_area :body %>
+    <%= form.rich_text_area :body, class: 'form-control' %>
     <%= form.hidden_field :reading %>
   </div>
 
   <div class="field">
     <%= form.label :date %>
-    <%= form.date_field :date %>
+    <%= form.date_field :date, class: 'form-control' %>
   </div>
 
   <div class="field">
     <%= form.label :location %>
-    <%= form.text_field :location %>
+    <%= form.text_field :location, class: 'form-control' %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.button 'Create Reading', class: 'btn btn-primary' %>
   </div>
 <% end %>
