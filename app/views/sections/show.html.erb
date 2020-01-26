@@ -1,0 +1,10 @@
+<p id="notice"><%= notice %></p>
+
+<h1><%= @section.title %></h1>
+
+<% @section.chapters.in_order.each do |chapter| %>
+  <h2>Chapter <%= chapter.number %></h2>
+  <% chapter.verses.in_order.each do |verse| %>
+    <p><%= verse.number%>. <%= verse.text %></p>
+  <% end %>
+<% end %>
