@@ -5,7 +5,7 @@ require 'rails_helper'
 describe VerseParser do
   describe '#call' do
     let(:line) do
-      "Exodus 1:1\tThese are the names of the sons of Israel who went to Egypt with Jacob, each with his family:\n"
+      "Exodus 1:1\tThese are the names of� the sons of Israel who went to Egypt with Jacob, each with his family:\n"
     end
     subject { described_class.new(line) }
 
@@ -23,6 +23,7 @@ describe VerseParser do
       subject.call
       verse = Chapter.find_by(number: 1).verses.find_by(number: 1)
       expect(verse.text).to match(/These are the names of the sons of Israel/)
+      expect(verse.text).not_to match('�')
       expect(verse.book).to eq(Book.find_by(name: 'Exodus'))
     end
   end

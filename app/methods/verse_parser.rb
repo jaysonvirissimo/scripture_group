@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class VerseParser
+  REPLACEMENT_CHARACTER = '�'
+
   def initialize(line)
     @line = line
   end
@@ -44,7 +46,7 @@ class VerseParser
   end
 
   def text
-    line.split("\t").last.chomp
+    line.split("\t").last.delete(REPLACEMENT_CHARACTER).chomp
   end
 
   def verse_number
