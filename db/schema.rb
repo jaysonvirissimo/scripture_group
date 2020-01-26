@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_19_040420) do
+ActiveRecord::Schema.define(version: 2020_01_25_211317) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -93,6 +93,17 @@ ActiveRecord::Schema.define(version: 2020_01_19_040420) do
     t.string "location"
   end
 
+  create_table "sections", force: :cascade do |t|
+    t.integer "starting_chapter_id", null: false
+    t.integer "ending_chapter_id", null: false
+    t.bigint "book_id", null: false
+    t.bigint "reading_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["book_id"], name: "index_sections_on_book_id"
+    t.index ["reading_id"], name: "index_sections_on_reading_id"
+  end
+
   create_table "verses", force: :cascade do |t|
     t.integer "number"
     t.text "text"
@@ -107,5 +118,7 @@ ActiveRecord::Schema.define(version: 2020_01_19_040420) do
   add_foreign_key "comments", "readings"
   add_foreign_key "questions", "readings"
   add_foreign_key "reactions", "readings"
+  add_foreign_key "sections", "books"
+  add_foreign_key "sections", "readings"
   add_foreign_key "verses", "chapters"
 end
