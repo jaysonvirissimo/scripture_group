@@ -14,16 +14,25 @@
     <%= link_to 'Edit', edit_reading_path(@reading), class: 'card-link' %>
     <%= link_to 'Add Section', new_section_path(reading_id: @reading.id, book_id: Book.first.id)%>
   </div>
-  <% if @reading.sections.any? %>
-    <div class="card-body">
-      <h5 class="card-title">Sections</h5>
-      <ul class="list-group list-group-flush">
-        <% @reading.sections.each do |section| %>
-          <li class="list-group-item"><%= link_to section.title, section_path(section) %></li>
+  <div class="card-body">
+    <h5 class="card-title">Sections</h5>
+    <ul class="list-group list-group-flush">
+      <% @reading.sections.each do |section| %>
+        <li class="list-group-item"><%= link_to section.title, section_path(section) %></li>
+      <% end %>
+    </ul>
+    <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Add new section for
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <% @books.each do |book| %>
+          <%= link_to book.name, new_section_path(book_id: book.id, reading_id: @reading.id), class: 'dropdown-item' %>
         <% end %>
-      </ul>
+      </div>
     </div>
-  <% end %>
+  </div>
+
   <div class="card-body">
     <h5 class="card-title">Reactions</h5>
     <ul class="list-group list-group-flush">
