@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class ReadingsController < ApplicationController
+  before_action :set_books, only: %i[show]
   before_action :set_reading, only: %i[show edit update destroy]
 
   # GET /readings
@@ -62,6 +63,10 @@ class ReadingsController < ApplicationController
   end
 
   private
+
+  def set_books
+    @books = Book.order(:name)
+  end
 
   # Use callbacks to share common setup or constraints between actions.
   def set_reading
