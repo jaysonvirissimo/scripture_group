@@ -40,7 +40,7 @@
         <% if reaction.verse.present? %>
           <li class="list-group-item">
             <blockquote class="blockquote mb-0">
-              <p><%= reaction.verse.chapter.book.name %> <%= reaction.verse.chapter.number%>:<%= reaction.verse.number%> <%= reaction.verse.text %></p>
+              <p><%= reaction.verse.title %> <%= reaction.verse.text %></p>
               <footer class="blockquote-footer"><%= reaction.body %></footer>
             </blockquote>
           </li>
