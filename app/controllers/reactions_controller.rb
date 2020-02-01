@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class ReactionsController < ApplicationController
-  before_action :set_reaction, only: [:show, :edit, :update, :destroy]
+  before_action :set_reaction, only: %i[show edit update destroy]
   before_action :set_reading, only: [:new]
   before_action :set_verse, only: [:new]
 
@@ -11,8 +13,7 @@ class ReactionsController < ApplicationController
 
   # GET /reactions/1
   # GET /reactions/1.json
-  def show
-  end
+  def show; end
 
   # GET /reactions/new
   def new
@@ -20,8 +21,7 @@ class ReactionsController < ApplicationController
   end
 
   # GET /reactions/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /reactions
   # POST /reactions.json
@@ -30,7 +30,7 @@ class ReactionsController < ApplicationController
 
     respond_to do |format|
       if @reaction.save
-        format.html { redirect_to readings_url, notice: 'Reaction was successfully created.' }
+        format.html { redirect_to reading_url(@reaction.reading), notice: 'Reaction was successfully created.' }
         format.json { render :show, status: :created, location: @reaction }
       else
         format.html { render :new }
