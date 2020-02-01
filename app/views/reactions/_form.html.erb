@@ -11,12 +11,16 @@
     </div>
   <% end %>
 
+  <% if verse.present? %>
+    <h3><%= "#{verse.chapter.book.name} #{verse.chapter.number}" %></h3>
+    <p><%= verse.number %>. <%= verse.text %></p>
+  <% end %>
+
   <div class="input-group mb-3">
-    <%# <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2"> %>
+    <%= form.hidden_field :verse_id, value: verse&.id %>
     <%= form.hidden_field :reading_id, value: reading.id %>
     <%= form.text_area :body, class: 'form-control', placeholder: 'Type your reaction here' %>
     <div class="input-group-append">
-      <%# <button class="" type="button" id="button-addon2">Button</button> %>
       <%= form.button 'Add Reaction', class: 'btn btn-outline-secondary' %>
     </div>
   </div>

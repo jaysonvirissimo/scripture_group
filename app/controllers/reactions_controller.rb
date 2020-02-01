@@ -1,5 +1,7 @@
 class ReactionsController < ApplicationController
   before_action :set_reaction, only: [:show, :edit, :update, :destroy]
+  before_action :set_reading, only: [:new]
+  before_action :set_verse, only: [:new]
 
   # GET /reactions
   # GET /reactions.json
@@ -62,13 +64,20 @@ class ReactionsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_reaction
-      @reaction = Reaction.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def reaction_params
-      params.require(:reaction).permit(:body, :reading_id, :name)
-    end
+  def set_reaction
+    @reaction = Reaction.find(params[:id])
+  end
+
+  def set_reading
+    @reading = Reading.find(params[:reading_id])
+  end
+
+  def set_verse
+    @verse = Verse.find(params[:verse_id])
+  end
+
+  def reaction_params
+    params.require(:reaction).permit(:body, :reading_id, :name, :verse_id)
+  end
 end

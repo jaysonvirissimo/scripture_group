@@ -37,9 +37,18 @@
     <h5 class="card-title">Reactions</h5>
     <ul class="list-group list-group-flush">
       <% @reading.reactions.each_with_index do |reaction, index| %>
-        <li class="list-group-item"><%= reaction.body %></li>
+        <% if reaction.verse.present? %>
+          <li class="list-group-item">
+            <blockquote class="blockquote mb-0">
+              <p><%= reaction.verse.chapter.book.name %> <%= reaction.verse.chapter.number%>:<%= reaction.verse.number%> <%= reaction.verse.text %></p>
+              <footer class="blockquote-footer"><%= reaction.body %></footer>
+            </blockquote>
+          </li>
+        <% else %>
+         <li class="list-group-item"><%= reaction.body %></li>
+        <% end %>
       <% end %>
     </ul>
   </div>
-  <%= render 'reactions/form', reading: @reading, reaction: Reaction.new %>
+  <%= render 'reactions/form', reading: @reading, reaction: Reaction.new, verse: nil %>
 </div>
