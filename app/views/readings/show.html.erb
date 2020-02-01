@@ -12,7 +12,6 @@
     <h6 class="card-subtitle mb-2 text-muted"><%= @reading.location %></h6>
     <p class="card-text"><%= @reading.body %></p>
     <%= link_to 'Edit', edit_reading_path(@reading), class: 'card-link' %>
-    <%= link_to 'Add Section', new_section_path(reading_id: @reading.id, book_id: Book.first.id)%>
   </div>
   <div class="card-body">
     <h5 class="card-title">Sections</h5>
