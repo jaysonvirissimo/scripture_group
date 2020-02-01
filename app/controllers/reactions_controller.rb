@@ -3,7 +3,9 @@
 class ReactionsController < ApplicationController
   before_action :set_reaction, only: %i[show edit update destroy]
   before_action :set_reading, only: [:new]
+  before_action :set_section, only: [:new]
   before_action :set_verse, only: [:new]
+
 
   # GET /reactions
   # GET /reactions.json
@@ -73,11 +75,15 @@ class ReactionsController < ApplicationController
     @reading = Reading.find(params[:reading_id])
   end
 
+  def set_section
+    @section = Section.find(params[:section_id])
+  end
+
   def set_verse
     @verse = Verse.find(params[:verse_id])
   end
 
   def reaction_params
-    params.require(:reaction).permit(:body, :reading_id, :name, :verse_id)
+    params.require(:reaction).permit(:body, :reading_id, :name, :verse_id, :section_id)
   end
 end
