@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 class SectionsController < ApplicationController
-  before_action :set_section, only: [:show, :edit, :update, :destroy]
-  before_action :set_book, only: [:edit, :new]
-  before_action :set_reading, only: [:edit, :new]
+  before_action :set_section, only: %i[show edit update destroy]
+  before_action :set_book, only: %i[edit new]
+  before_action :set_reading, only: %i[edit new]
 
   # GET /sections
   # GET /sections.json
@@ -11,8 +13,7 @@ class SectionsController < ApplicationController
 
   # GET /sections/1
   # GET /sections/1.json
-  def show
-  end
+  def show; end
 
   # GET /sections/new
   def new
@@ -20,8 +21,7 @@ class SectionsController < ApplicationController
   end
 
   # GET /sections/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /sections
   # POST /sections.json
@@ -64,7 +64,7 @@ class SectionsController < ApplicationController
   end
 
   private
-  
+
   def set_book
     @book = Book.find(params[:book_id])
   end

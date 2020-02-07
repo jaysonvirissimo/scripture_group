@@ -6,7 +6,6 @@ class ReactionsController < ApplicationController
   before_action :set_section, only: [:new]
   before_action :set_verse, only: [:new]
 
-
   # GET /reactions
   # GET /reactions.json
   def index
@@ -32,7 +31,7 @@ class ReactionsController < ApplicationController
 
     respond_to do |format|
       if @reaction.save
-        format.html { redirect_to reading_url(@reaction.reading), notice: 'Reaction was successfully created.' }
+        format.html { redirect_to after_create_redirect, notice: 'Reaction was successfully created.' }
         format.json { render :show, status: :created, location: @reaction }
       else
         format.html { render :new }
@@ -66,6 +65,14 @@ class ReactionsController < ApplicationController
   end
 
   private
+
+  def after_create_redirect
+    if @reaction.verse.present?
+      @reaction.section.path_to(@reaction.verse)
+    else
+      reading_url(@reaction.reading)
+    end
+  end
 
   def set_reaction
     @reaction = Reaction.find(params[:id])
