@@ -34,7 +34,7 @@ class VerseParser
   end
 
   def book_name
-    meta_data.first
+    meta_data.take(meta_data.length - 1).join(' ')
   end
 
   def chapter_and_verse_numbers
