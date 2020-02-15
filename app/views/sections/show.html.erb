@@ -1,6 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <h1><%= @section.title %></h1>
+<p><%= back_to(@section.reading) %></p>
 
 <% @section.chapters.in_order.each do |chapter| %>
   <h2>Chapter <%= chapter.number %></h2>
@@ -8,3 +9,5 @@
     <p id=<%= verse.id %>><%= verse.number %>. <%= verse.text %> <%= link_to pencil_svg, new_reaction_url(reading_id: @section.reading.id, section_id: @section.id, verse_id: verse.id) %></p>
   <% end %>
 <% end %>
+
+<p><%= back_to(@section.reading) %></p>
