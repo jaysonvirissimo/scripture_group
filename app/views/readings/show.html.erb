@@ -35,7 +35,7 @@
   <div class="card-body">
     <h5 class="card-title">Reactions</h5>
     <ul class="list-group list-group-flush">
-      <% @reading.reactions.each_with_index do |reaction, index| %>
+      <% @reading.reactions.ordered_by_section.each_with_index do |reaction, index| %>
         <% if reaction.verse.present? %>
           <li class="list-group-item">
             <blockquote class="blockquote mb-0">
