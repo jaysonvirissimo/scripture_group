@@ -5,4 +5,8 @@ class Chapter < ApplicationRecord
   has_many :verses
 
   scope :in_order, -> { order(:number) }
+
+  def audio_url
+    "#{book.audio_url}.#{number}"
+  end
 end
