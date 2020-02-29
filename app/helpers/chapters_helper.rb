@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ChaptersHelper
   def link_to_audio(chapter)
     link_to(audio_svg, chapter.audio_url, target: '_blank')

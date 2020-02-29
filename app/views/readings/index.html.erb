@@ -5,9 +5,8 @@
   <% @readings.each_with_index do |reading, index| %>
     <li class="list-group-item">
       <%= link_to "#{reading.date} -- #{reading.location}", reading %>
-      <% if index.zero? %>
-        <span class="badge badge-secondary">New</span>
-      <% end %>
+      <%= new_badge(index) %>
+      <%= today_badge(reading.date) %>
     </li>
   <% end %>
 </ul>
