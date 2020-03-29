@@ -17,12 +17,12 @@
 
   <div class="field">
     <%= form.label :starting_chapter_id %>
-    <%= form.select :starting_chapter_id, @book.chapters.map { |chapter| [chapter.number, chapter.id] } %>
+    <%= form.select :starting_chapter_id, @book.chapters.in_order.pluck(:number, :id) %>
   </div>
 
   <div class="field">
     <%= form.label :ending_chapter_id %>
-    <%= form.select :ending_chapter_id, @book.chapters.map { |chapter| [chapter.number, chapter.id] } %>
+    <%= form.select :ending_chapter_id, @book.chapters.in_order.pluck(:number, :id) %>
   </div>
 
   <div class="actions">
