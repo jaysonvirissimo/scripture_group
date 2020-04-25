@@ -9,4 +9,8 @@ class Chapter < ApplicationRecord
   def audio_url
     "#{book.audio_url}.#{number}"
   end
+
+  def audio_url?
+    book.audio_url.present?
+  end
 end
